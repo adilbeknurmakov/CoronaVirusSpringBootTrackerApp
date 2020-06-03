@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>CoronaVirus Data</title>
+</head>
+<body>
+<div class = "container">
+<div class="jumbotron jumbotron-fluid" .bg-gradient-success>
+    <div class="container">
+        <p><b>Total cases up to date worldwide:</b></p>
+        <h1 class="display-4" th:text="${totalCases}"></h1>
+        <hr class="my-5">
+        <p>
+            <span>New total cases within 24 hours worlwide:</span>
+            <span class="text-primary" th:text="${totalNewCases}"></span>
+        </p>
+    </div>
+</div>
+
+<table class = "table">
+    <tr>
+        <th>STATE</th>
+        <th>COUNTRY</th>
+        <th>TOTAL CASES</th>
+        <th>INCREASE SINCE DAY BEFORE</th>
+    </tr>
+    <tr th:each="stats : ${statData}">
+        <td th:text="${stats.state}"></td>
+        <td th:text="${stats.country}"></td>
+        <td th:text="${stats.latestReportedCases}">0</td>
+        <td th:text="${stats.diffFromBeforeDays}">0</td>
+    </tr>
+</table>
+</div>
+</body>
+</html>
